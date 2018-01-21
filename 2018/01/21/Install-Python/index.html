@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="python3.6," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="Less is More">
+<meta name="description" content="本文以linux系统为例进行说明安装python3.6。MacOS系统建议直接下载安装包进行安装（使用源码安装会出现依赖问题）">
+<meta name="keywords" content="python3.6">
 <meta property="og:type" content="article">
-<meta property="og:title" content="My First Post">
-<meta property="og:url" content="https://cc9205.github.io/2018/01/16/My-First-Post/index.html">
+<meta property="og:title" content="Install Python">
+<meta property="og:url" content="https://cc9205.github.io/2018/01/21/Install-Python/index.html">
 <meta property="og:site_name" content="CC&#39;s Blog">
-<meta property="og:description" content="Less is More">
+<meta property="og:description" content="本文以linux系统为例进行说明安装python3.6。MacOS系统建议直接下载安装包进行安装（使用源码安装会出现依赖问题）">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-16T11:22:09.788Z">
+<meta property="og:updated_time" content="2018-01-21T10:23:36.617Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="My First Post">
-<meta name="twitter:description" content="Less is More">
+<meta name="twitter:title" content="Install Python">
+<meta name="twitter:description" content="本文以linux系统为例进行说明安装python3.6。MacOS系统建议直接下载安装包进行安装（使用源码安装会出现依赖问题）">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://cc9205.github.io/2018/01/16/My-First-Post/"/>
+  <link rel="canonical" href="https://cc9205.github.io/2018/01/21/Install-Python/"/>
 
 
 
 
 
-  <title>My First Post | CC's Blog</title>
+  <title>Install Python | CC's Blog</title>
   
 
 
@@ -271,7 +272,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://cc9205.github.io/2018/01/16/My-First-Post/">
+    <link itemprop="mainEntityOfPage" href="https://cc9205.github.io/2018/01/21/Install-Python/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CC">
@@ -288,7 +289,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">My First Post</h1>
+          <h1 class="post-title" itemprop="name headline">Install Python</h1>
         
 
         <div class="post-meta">
@@ -300,8 +301,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-16T19:22:09+08:00">
-                2018-01-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-21T17:37:14+08:00">
+                2018-01-21
               </time>
             
 
@@ -310,6 +311,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">programming</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -338,7 +361,75 @@
       
 
       
-        
+        <p>本文以linux系统为例进行说明安装python3.6。MacOS系统建议直接下载安装包进行安装（使用源码安装会出现依赖问题）</p>
+<a id="more"></a>
+<p>###安装python3.6</p>
+<p>一般情况下，由于系统依赖关系，建议不要破坏当前的python版本，可以通过源码的方式安装需要的pthon版本。</p>
+<ol>
+<li><strong>检查当前系统的python版本</strong>，打开命令行终端输入python：</li>
+</ol>
+<pre><code>$ python
+Python 2.7.10 (default, Jul 15 2017, 17:16:57)
+[GCC 4.2.1 Compatible Apple LLVM 9.0.0 (clang-900.0.31)] on darwin
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt;
+</code></pre><ol>
+<li><p><strong>安装openssl,openssl-dev包</strong></p>
+<ul>
+<li>因安装python过程中，安装pip包时需要依赖openssl，故先检查系统是否安装。  </li>
+<li><p>通过Linux的命令进行安装（centos 使用yum, ubuntu使用apt-get）</p>
+<pre><code>[root@localhost ~]# yum install openssl openssl-devel -y
+</code></pre></li>
+</ul>
+</li>
+</ol>
+<ol>
+<li><p><strong>下载源码进行安装</strong>(可以直接通过wget方式进行下载）</p>
+<pre><code>#wget  https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tar.xz
+# xz -d Python-3.6.4.tar.xz  
+# tar xvf Python-3.6.4.tar
+#cd Python-3.6.4
+#./configure --prefix=/usr/local/python3.6 
+# make &amp;&amp; make install
+</code></pre><p> 备注：</p>
+<ul>
+<li><p>若系统没有xz命令，可以使用 tar -Jxvf Python-3.6.4.tar.gz.xz 直接进行解压。<br>  安装完成后，可以输入python3 查看是否安装成功。</p>
+<pre><code>$ python3
+Python 3.6.4 (v3.6.4:d48ecebad5, Dec 18 2017, 21:07:28)
+[GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt;
+</code></pre></li>
+</ul>
+</li>
+<li><p><strong>创建虚拟环境</strong></p>
+<p> 可以为不同的项目创建不同的虚拟环境，这样项目间的虚拟环境互不干扰。<br> 例如为flask项目创建虚拟环境名称为venv：</p>
+<pre><code># cd flask
+#/usr/local/python3.6/bin/pyvenv ./venv
+</code></pre><p> <strong>启动虚拟环境</strong>，启动成功后，命令行前面会有venv的标识：</p>
+<pre><code>$ source venv/bin/activate
+(venv) $
+</code></pre><p> 此时输入python，会看到python的版本为安装的3.6版本</p>
+<p> <strong>关闭虚拟环境</strong>：</p>
+<p> (venv) $deactivate<br> $<br> 此时再输入python会看到python版本为默认的2.7版本</p>
+</li>
+</ol>
+<ol>
+<li><p><strong>设置bash_profile</strong></p>
+<p> 可以把需要启动的虚拟环境命令添加到默认的用户启动脚本中，这样每次登录后默认会启动对应的虚拟环境。</p>
+<pre><code>$ vim ~/.bash_profile
+</code></pre><p> 添加启动虚拟环境命令到文件的末尾</p>
+<pre><code>source /home/cc/flask/venv/bin activate 
+</code></pre></li>
+<li><p><strong>配置pip.conf</strong></p>
+<p> 添加pip安装的源为阿里云，提高python包的下载速度。<br> 示例如下（若用户目录下没有pip.conf文件，创建并按照如下添加内容即可）：</p>
+<pre><code>$ vim ~/pip.conf 
+   [global]
+   trusted-host=mirrors.aliyun.com
+   index-url=http://mirrors.aliyun.com/pypi/simple/
+</code></pre></li>
+</ol>
+
       
     </div>
     
@@ -353,27 +444,17 @@
 
     <footer class="post-footer">
       
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/01/16/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-          </div>
+        <div class="post-tags">
+          
+            <a href="/tags/python3-6/" rel="tag"># python3.6</a>
+          
         </div>
+      
+
+      
+      
+      
+
       
 
       
@@ -442,14 +523,32 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
             
 
           </nav>
